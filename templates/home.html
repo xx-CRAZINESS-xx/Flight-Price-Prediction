@@ -1,0 +1,199 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Price Prediction</title>
+
+
+    <link rel="stylesheet" href='/static/bootstrap-4.3.1/css/bootstrap.css'>
+    <link rel="stylesheet" href='/static/fontawesome/css/all.min.css'>
+    <link rel="stylesheet" href="/static/bootstrap-4.3.1/css/styles.css">
+
+    <script src="/static/fontawesome/js/all.js"></script>
+    <script src="/static/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+
+    <style>
+        body,html   {
+            height:100%; 
+            margin:0;   }    
+            
+            .bg {
+                background-image: url('/static/image/pngtree-gradient-simple-background-of-frosted-glass-spring-image_751117.jpg');
+                height: 50%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                
+            }
+
+    </style>
+
+</head>
+
+<body class="bg">
+
+    <!-- As a heading -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">FLIGHT PRICE</a>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br>
+
+
+    <div class="container">
+
+
+
+        <form name='form' action="/predict" method="post">
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                   <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Departure Date</h5>
+
+                            <!-- Departure -->
+                            <label>Departure Date</label> <span id="error departure"></span>
+                            <input type="datetime-local" name="Dep_Time" id="Dep_Time" required="required">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Arrival Date</h5>
+
+                            <!-- Arrival -->
+                            <label>Arrival Date </label> <span id="error arrival"></span>
+                            <input type="datetime-local" name="Arrival_Time" id="Arrival_Time" required="required"
+                            min="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <!-- Source -->
+                            <h5 class="card-title">Source</h5>
+                            <select name="Source" id="Source" required="required">
+                                <option value="Delhi">Delhi</option>
+                                <option value="Kolkata">Kolkata</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Chennai">Chennai</option>
+                                <option value="Banglore">Banglore</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Destination</h5>
+                            
+                            <!-- Destination -->
+                            <select name="Destination" id="Destination" required="required">
+                                <option value="Cochin">Cochin</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Kolkata">Kolkata</option>
+                                <option value="Banglore">Banglore</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <br>
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Stoppage</h5>
+
+                            <!-- Total Stops -->
+                            <select name="stops" required="required">
+                                <option value="0">Non-Stop</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"> Choose your airline </h5>
+
+                            <!-- Airline -->
+                            <select name="airline" id="airline" required="required">
+                                <option value="Jet Airways">Jet Airways</option>
+                                <option value="IndiGo">IndiGo</option>
+                                <option value="Air India">Air India</option>
+                                <option value="Multiple carriers">Multiple carriers</option>
+                                <option value="SpiceJet">SpiceJet</option>
+                                <option value="Vistara">Vistara</option>
+                                <option value="Air Asia">Air Asia</option>
+                                <option value="GoAir">GoAir</option>
+                                <option value="Multiple carriers Premium economy">Multiple carriers Premium economy
+                                </option>
+                                <option value="Jet Airways Business">Jet Airways Business</option>
+                                <option value="Vistara Premium economy">Vistara Premium economy</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <br>
+            <br>
+            <br>
+            <!-- Submit -->
+
+             <button type="submit" class="btn btn-secondary" style="font-size: 30px;background-color:transparent; border: none; color: black;">
+                <i class='fas fa-plane' aria-hidden="true" ></i> 
+            </button>
+ 
+        </form>
+
+        <br>
+        <h3>{{ prediction_text }}</h3>
+
+
+    </div>
+<script>
+    
+</script>
+</body>
+
+</html>
