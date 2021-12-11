@@ -56,3 +56,8 @@ https://www.kaggle.com/nikhilmittal/flight-fare-prediction-mh
 * Used Shap for Model Explainability
 
 ![Alt text](https://github.com/xx-CRAZINESS-xx/Flight-Price-Prediction/blob/main/static/image/shap.png?raw=true)
+
+## Future Improvements
+* UI
+
+* If you set the arrival date and time which is less than the departure date and time, the model still gives an output which should be improved
